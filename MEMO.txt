@@ -1,0 +1,194 @@
+═══════════════════════════════════════════════════════════════
+  MÉMO — PORTFOLIO ARCHITECT LEVEL 2026
+  François Leking | Dernière mise à jour : Partie 1 + 2 livrées
+═══════════════════════════════════════════════════════════════
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ✅  CE QUI EST FAIT (Parties 1 & 2)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FONDATIONS
+  ✅ Structure de dossiers complète
+     /content, /components/{ui,layout,sections}, /hooks, /lib, /app
+  ✅ package.json avec toutes les dépendances (Next.js 15, Framer Motion,
+     next-themes, React Hook Form, Zod, clsx, tailwind-merge)
+  ✅ tsconfig.json — TypeScript strict mode + alias @/*
+  ✅ next.config.ts — React Compiler, optimisation images
+
+CONTENT LAYER (Single Source of Truth)
+  ✅ content/index.ts         — Barrel export centralisé
+  ✅ content/personal.ts      — Données perso typées (PersonalData)
+  ✅ content/projects.ts      — 6 projets typés (Project interface)
+  ✅ content/skills.ts        — Skills groupés par catégorie (SkillCategory)
+  ✅ content/experience.ts    — Timeline complète (TimelineItem + helpers)
+
+DESIGN SYSTEM
+  ✅ app/globals.css          — Variables CSS (Light + Dark mode)
+                               Glassmorphism tokens (.glass-card)
+                               Fonts : Syne (display) + DM Sans (body) + JetBrains Mono
+                               Utilitaires : .text-gradient, .section-padding
+                               Focus visible WCAG, scrollbar custom
+
+APP STRUCTURE
+  ✅ app/layout.tsx           — RootLayout avec :
+                               • Metadata SEO complète (OG + Twitter Cards)
+                               • JSON-LD Schema "Person"
+                               • Viewport themeColor
+                               • Google Fonts via next/font
+                               • ThemeProvider (next-themes)
+  ✅ app/page.tsx             — Page principale assemblant toutes les sections
+
+LAYOUT COMPONENTS
+  ✅ components/layout/ThemeProvider.tsx  — Wrapper next-themes (client)
+  ✅ components/layout/Navbar.tsx         — Sticky, ScrollSpy, dark toggle,
+                                           menu mobile AnimatePresence, ARIA
+  ✅ components/layout/Footer.tsx         — Liens sociaux, copyright dynamique
+
+HOOKS
+  ✅ hooks/useScrollSpy.ts    — IntersectionObserver, détecte section active
+  ✅ hooks/useTheme.ts        — Wrapper next-themes (évite imports directs)
+
+LIB / UTILS
+  ✅ lib/utils.ts             — cn(), formatDate(), getDuration(), slugify()
+  ✅ lib/validation.ts        — Zod schema contact + type ContactFormData
+
+SECTIONS
+  ✅ sections/HeroSection.tsx        — Nom, tagline, CTA, badge dispo,
+                                       staggerChildren, scroll indicator
+  ✅ sections/AboutSection.tsx       — Bio, stats, valeurs (4 cartes)
+  ✅ sections/SkillsSection.tsx      — Grille glassmorphism + barres de niveau
+                                       + useInView scroll trigger
+  ✅ sections/ProjectsSection.tsx    — Filtre catégories, AnimatePresence layout,
+                                       cards glassmorphism
+  ✅ sections/ExperienceSection.tsx  — Timeline verticale, tabs Work/Projet/Formation,
+                                       formatDate + getDuration
+  ✅ sections/ContactSection.tsx     — React Hook Form + Zod, états loading/success/error,
+                                       ARIA live regions
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ❌  CE QUI MANQUE (Partie 3 — à faire)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMPOSANTS UI ATOMIQUES (Shadcn/UI base)
+  ❌ components/ui/Button.tsx        — Variantes (primary, ghost, outline) + sizes
+  ❌ components/ui/Badge.tsx         — Tags réutilisables (catégories, tech)
+  ❌ components/ui/SectionHeader.tsx — En-tête de section réutilisable (titre + sous-titre)
+  ❌ components/ui/Card.tsx          — Wrapper glassmorphism abstrait (DRY)
+
+API & BACKEND
+  ❌ app/api/contact/route.ts        — Route Handler Next.js pour le formulaire de contact
+                                       (intégration Resend ou EmailJS ou Nodemailer)
+
+ANIMATIONS & UX
+  ❌ Page Transition AnimatePresence — Wrapping des routes pour transition enter/exit
+  ❌ Cursor personnalisé (optionnel) — Dot cursor avec hover effect sur les cards
+  ❌ Parallax subtil sur le Hero     — Background grid avec scroll parallax
+
+OPTIMISATION IMAGES
+  ❌ Vraies images projets           — Ajouter les screenshots dans /public/projects/
+  ❌ Remplacer les placeholders      — Utiliser <Image> Next.js dans ProjectCard
+  ❌ og-image.png                    — Image 1200x630 pour OpenGraph
+
+PAGES SUPPLÉMENTAIRES (optionnel)
+  ❌ app/projects/[slug]/page.tsx    — Page détail projet avec longDescription
+  ❌ app/blog/page.tsx               — Blog (si tu veux partager tes TikTok scripts)
+  ❌ app/not-found.tsx               — Page 404 customisée
+
+ACCESSIBILITÉ (A11y) — Finitions
+  ❌ Skip to main content link       — Lien caché pour lecteurs d'écran
+  ❌ Audit contrastes complet        — Vérifier tous les textes muted vs background
+  ❌ Test clavier navigation         — Tab order logique sur toutes les sections
+
+CONFIG & DÉPLOIEMENT
+  ❌ .env.local.example              — Template des variables d'environnement
+  ❌ Vercel config (vercel.json)     — Headers de sécurité, rewrites
+  ❌ README.md                       — Instructions d'installation et de déploiement
+  ❌ robots.txt + sitemap.xml        — SEO technique
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📋  ORDRE D'EXÉCUTION RECOMMANDÉ (Partie 3)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Composants UI atomiques (Button, Badge, Card, SectionHeader)
+     → Factoriser les répétitions dans les sections existantes
+
+  2. app/api/contact/route.ts
+     → Brancher le vrai envoi d'email (Resend recommandé)
+
+  3. Skip to content + finitions A11y
+
+  4. Page détail projet [slug]
+
+  5. og-image + images projets + robots.txt + sitemap
+
+  6. README + .env.example + déploiement Vercel
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🗂️  ARBORESCENCE FINALE ATTENDUE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+portfolio/
+├── app/
+│   ├── api/
+│   │   └── contact/
+│   │       └── route.ts          ❌ à faire
+│   ├── projects/
+│   │   └── [slug]/
+│   │       └── page.tsx          ❌ à faire
+│   ├── globals.css               ✅
+│   ├── layout.tsx                ✅
+│   └── page.tsx                  ✅
+├── components/
+│   ├── layout/
+│   │   ├── Footer.tsx            ✅
+│   │   ├── Navbar.tsx            ✅
+│   │   └── ThemeProvider.tsx     ✅
+│   ├── sections/
+│   │   ├── AboutSection.tsx      ✅
+│   │   ├── ContactSection.tsx    ✅
+│   │   ├── ExperienceSection.tsx ✅
+│   │   ├── HeroSection.tsx       ✅
+│   │   ├── ProjectsSection.tsx   ✅
+│   │   └── SkillsSection.tsx     ✅
+│   └── ui/
+│       ├── Badge.tsx             ❌ à faire
+│       ├── Button.tsx            ❌ à faire
+│       ├── Card.tsx              ❌ à faire
+│       └── SectionHeader.tsx     ❌ à faire
+├── content/
+│   ├── experience.ts             ✅
+│   ├── index.ts                  ✅
+│   ├── personal.ts               ✅
+│   ├── projects.ts               ✅
+│   └── skills.ts                 ✅
+├── hooks/
+│   ├── useScrollSpy.ts           ✅
+│   └── useTheme.ts               ✅
+├── lib/
+│   ├── utils.ts                  ✅
+│   └── validation.ts             ✅
+├── public/
+│   ├── og-image.png              ❌ à faire
+│   ├── resume.pdf                ❌ à ajouter
+│   └── projects/                 ❌ screenshots à ajouter
+├── .env.local.example            ❌ à faire
+├── next.config.ts                ✅
+├── package.json                  ✅
+├── README.md                     ❌ à faire
+└── tsconfig.json                 ✅
+
+═══════════════════════════════════════════════════════════════
+  NOTES D'ARCHITECTURE
+═══════════════════════════════════════════════════════════════
+
+• Toute modification de contenu → fichiers /content uniquement
+• Pas d'import direct de next-themes → passer par hooks/useTheme.ts
+• Les glassmorphism cards → utiliser la classe .glass-card du globals.css
+• Les animations scroll → toujours avec viewport={{ once: true }} pour perf
+• TypeScript strict → pas de `any`, toujours typer les retours de fonction
+• Images → toujours utiliser <Image> de next/image (jamais <img> natif)
+
+═══════════════════════════════════════════════════════════════
