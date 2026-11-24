@@ -1,14 +1,14 @@
 // ============================================================
 // SEO — sitemap.ts
 // Génère le sitemap XML dynamiquement depuis les données content.
-// Accessible sur : https://francoisleking.dev/sitemap.xml
+// Accessible sur : https://ingabadefrancois.vercel.app/sitemap.xml
 // ============================================================
 
 import type { MetadataRoute } from "next";
-import { projects } from "@/content";
+import { projects, timeline } from "@/content";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://francoisleking.dev";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://ingabadefrancois.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Pages statiques
@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified:     new Date(),
       changeFrequency:  "monthly",
       priority:         1,
+    },
+    {
+      url:              `${BASE_URL}/docs`,
+      lastModified:     new Date(),
+      changeFrequency:  "monthly",
+      priority:         0.5,
     },
   ];
 
@@ -29,5 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:         0.7,
   }));
 
-  return [...staticPages, ...projectPages];
+  const workPages: MetadataRoute.Sitemap = timeline.map((item) => ({
+    url:              `${BASE_URL}/work/${item.id}`,
+    lastModified:     new Date(),
+    changeFrequency:  "yearly" as const,
+    priority:         0.6,
+  }));
+
+  return [...staticPages, ...projectPages, ...workPages];
 }

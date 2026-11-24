@@ -242,7 +242,7 @@ export const DEFAULT_PROJECTS = {
       tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Lucide Icons", "Three.js"],
       images: ["/projects/portfolio.png"],
       githubUrl: "https://github.com/Shootware",
-      liveUrl: "https://francoisleking.dev",
+      liveUrl: "https://ingabadefrancois.vercel.app",
       caseStudyUrl: "/projects/portfolio",
       orderIndex: 4,
     },

@@ -1,6 +1,6 @@
 // ============================================================
 // SEO — robots.ts
-// Accessible sur : https://francoisleking.dev/robots.txt
+// Accessible sur : https://ingabadefrancois.vercel.app/robots.txt
 // ============================================================
 
 import type { MetadataRoute } from "next";
@@ -12,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       allow:     "/",
       disallow:  ["/api/"],   // empêche l'indexation des routes API
     },
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://francoisleking.dev"}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ingabadefrancois.vercel.app"}/sitemap.xml`,
   };
 }

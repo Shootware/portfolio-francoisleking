@@ -14,7 +14,7 @@ import { DEFAULT_PERSONAL, DEFAULT_SETTINGS } from "@/content/defaults";
 import "./globals.css";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://francoisleking.dev";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://ingabadefrancois.vercel.app";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -76,7 +76,7 @@ export async function generateMetadata(): Promise<Metadata> {
       default: defaultTitle,
       template: titleTemplate,
     },
-    description,
+    description: personal.bio,
     keywords: [
       "développeur fullstack",
       "React",
@@ -151,6 +151,20 @@ export default async function RootLayout({
     sameAs: personal.socials.map((social) => social.href),
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${personal.name} — Portfolio`,
+    url: SITE_URL,
+    description: personal.bio,
+    inLanguage: "fr-FR",
+    publisher: {
+      "@type": "Person",
+      name: personal.name,
+      url: SITE_URL,
+    },
+  };
+
   return (
     <html
       lang="fr"
@@ -161,6 +175,10 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body suppressHydrationWarning className="antialiased">
